@@ -9,12 +9,6 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>01</td>
-                <td>Nguyen Quang Hai</td>
-                <td>05/09/1997</td>
-                <td>Ha Noi</td>
-            </tr>
             <?php
                 foreach ($arrData as $trainee){
                     ?>
