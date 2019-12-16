@@ -21,7 +21,7 @@ class TraineeMod
             $des=$row['Description'];
             $lang=$row['Lang'];
             $toeic=$row['Toeic'];
-            $user=$row['Username'];
+            $user=$row['UserName'];
             $pass=$row['Pass'];
             array_push($arrTrainee,new Trainee($id,$name,$date,$address,$des,$lang,$toeic,$user,$pass));
         }
