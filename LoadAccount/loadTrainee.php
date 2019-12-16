@@ -17,21 +17,61 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+    <style>
+    *{
+        font-family: 'Raleway', sans-serif;
+    }
+    </style>
+    
 </head>
 <body>
-    <table class="table">
+<!--justify-content-center-->
+<?php
+require_once '../Functions/conDb.php';
+?>
+<div class="container mt-3">
+    <table class="table table-hover table-striped">
         <thead>
             <tr>
-                <th></th>
-                <th></th>
-                <th></th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Date of Birth</th>
+                <th>Address</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-
+                <td>01</td>
+                <td>Nguyen Quang Hai</td>
+                <td>05/09/1997</td>
+                <td>Ha Noi</td>
             </tr>
+            <?php
+                $data=$conn->query("SELECT * FROM trainee");
+                foreach ($data as $row){
+                    $id=$row['Id'];
+                    $name=$row['Name'];
+                    $age=$row['DateOfBirth'];
+                    $address=$row['Address'];
+                    ?>
+                        <tr>
+                            <?php
+                                echo "<td>$id</td>";
+                                echo "<td>$name</td>";
+                                echo "<td>$age</td>";
+                                echo "<td>$address</td>";
+                            ?>
+                        </tr>
+                    <?php
+                }
+            ?>
         </tbody>
     </table>
+</div>
+
 </body>
 </html>
