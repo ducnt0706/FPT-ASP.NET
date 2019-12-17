@@ -36,11 +36,9 @@
 include_once 'Controller/Controller.php';
 
 $controller=new Controller();
-$controller->manageTrainee();
+$controller->addTrainee();
 
 ?>
 
 </body>
 </html>
-
-

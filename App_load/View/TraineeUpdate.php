@@ -29,7 +29,7 @@
             <div class="form-group">
                 <input type="text" name="Pass" placeholder="Pass Word" required value="<?php echo $trainee->pass?>">
             </div>
-            <button type="submit" class="btn btn-warning">Register</button>
+            <button type="submit" class="btn btn-warning">Update</button>
         </form>
     </div>
 </div>

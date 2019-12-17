@@ -1,7 +1,35 @@
 <?php
 include_once './Model/TraineeMod.php';
 class Controller{
-    public function loadTrainee(){
+    public function addTrainee(){
+         $msg=null;
+         if (isset($_POST['Name'])){
+                //MUST DATA DO: addName, DateOfBirth, Address, Description, Lang, Toeic, UserName, Pass)
+            $name=$_POST['Name'];
+            $date=$_POST['DateOfBirth'];
+            $address=$_POST['Address'];
+            $descript=$_POST['Description'];
+            $lang=$_POST['Lang'];
+            $toeic=$_POST['Toeic'];
+            $user=$_POST['UserName'];
+            $pass=$_POST['Pass'];
+
+            //TODO: do query update data
+            $connDb=new ConnDb();
+            $conn=$connDb->getConn();
+            $result=$conn->query("INSERT INTO trainee (Id, Name, DateOfBirth, Address, Description, Lang, Toeic, UserName, Pass) VALUES (NULL ,'$name', '$date', '$address', '$descript', '$lang', '$toeic', '$user', '$pass')");
+            if(!$result){
+                $msg="Adding fail!";
+            }else{
+                $msg="Adding successfully";
+            }
+
+            include_once './View/TraineeAdd.php';
+        }else{
+             include_once './View/TraineeAdd.php';
+         }
+    }
+    public function manageTrainee(){
         if(isset($_GET['vtraineeid'])){
             $model=new TraineeMod();
             $data=$model->getDetailTrainee($_GET['vtraineeid']);
