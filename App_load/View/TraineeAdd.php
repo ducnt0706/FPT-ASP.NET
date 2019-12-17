@@ -5,50 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <!-- Custom Theme files -->
     <link href="../Source/traineeAdd.css" rel="stylesheet" type="text/css" media="all" />
-    <!-- //Custom Theme files -->
-    <!-- web font -->
-    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
-    <!-- //web font -->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<!-- main -->
-<div class="main-w3layouts wrapper">
-    <h1>Creative SignUp Form</h1>
-    <div class="main-agileinfo">
-        <div class="agileits-top">
-            <form action="#" method="post">
-                <input class="text" type="text" name="Username" placeholder="Username" required="">
-                <input class="text email" type="email" name="email" placeholder="Email" required="">
-                <input class="text" type="password" name="password" placeholder="Password" required="">
-                <input class="text w3lpass" type="password" name="password" placeholder="Confirm Password" required="">
-                <div class="wthree-text">
-                    <label class="anim">
-                        <input type="checkbox" class="checkbox" required="">
-                        <span>I Agree To The Terms & Conditions</span>
-                    </label>
-                    <div class="clear"> </div>
-                </div>
-                <input type="submit" value="SIGNUP">
-            </form>
-            <p>Don't have an Account? <a href="#"> Login Now!</a></p>
+        <div class="container pt-3">
+            <div>
+                <form action="" method="post">
+                    <div class="form-group">
+                        <input type="text" name="Name" placeholder="Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="date" name="DateOfBirth" placeholder="DateOfBirth">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="Address" placeholder="Address">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="Description" placeholder="Description about trainee: Experience detail"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="Lang" placeholder="Lang">
+                    </div>
+                    <div class="form-group">
+                        <input type="number" name="Toeic" placeholder="Toeic">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="UserName" placeholder="User Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="Pass" placeholder="Pass Word" required>
+                    </div>
+                    <button type="submit" class="btn btn-warning">Register</button>
+                </form>
+            </div>
         </div>
-    </div>
-    <!-- //copyright -->
-    <ul class="colorlib-bubbles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
-</div>
-<!-- //main -->
 </body>
 </html>

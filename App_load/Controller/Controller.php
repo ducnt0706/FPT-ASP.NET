@@ -12,11 +12,31 @@ class Controller{
             $connDb=new ConnDb();
             $conn=$connDb->getConn();
             $conn->query("DELETE FROM Trainee WHERE Id = '$did'");
-            header("Location: ./index.php");
+            header("Location: ./manage_trainee.php");
         }elseif (isset($_GET['utraineeid'])){
             $uid=$_GET['utraineeid'];
+            //TODO: get trainee
+            $model=new TraineeMod();
+            $trainee=$model->getDetailTrainee($uid);
 
             include_once ('./View/TraineeUpdate.php');
+        }elseif (isset($_POST['idTraineeU'])){
+            //MUST DATA DO:Id, Name, DateOfBirth, Address, Description, Lang, Toeic, UserName, Pass)
+            $id=$_POST['idTraineeU'];
+            $name=$_POST['Name'];
+            $date=$_POST['DateOfBirth'];
+            $address=$_POST['Address'];
+            $descript=$_POST['Description'];
+            $lang=$_POST['Lang'];
+            $toeic=$_POST['Toeic'];
+            $user=$_POST['UserName'];
+            $pass=$_POST['Pass'];
+
+            //TODO: do query update data
+            $connDb=new ConnDb();
+            $conn=$connDb->getConn();
+            $conn->query("UPDATE Trainee SET Name='$name', DateOfBirth='$date', Address='$address', Description='$descript', Lang='$lang', Toeic='$toeic', UserName='$user', Pass='$pass' WHERE Id = '$id'");
+            header("Location: ./manage_trainee.php");
         }
         else
         {
