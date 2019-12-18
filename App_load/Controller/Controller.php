@@ -1,5 +1,8 @@
 <?php
 include_once './Model/TraineeMod.php';
+include_once './Model/CategoryMod.php';
+include_once './Model/CourseMod.php';
+
 class Controller{
     public function addTrainee(){
          $msg=null;
@@ -73,6 +76,29 @@ class Controller{
 
             include_once ('./View/TraineeList.php');
         }
+    }
+
+    public function addTrainer(){
+
+    }
+    public function manageTrainer(){
+
+    }
+
+    public function addCategory(){
+
+    }
+    public function manageCategory(){
+        $model=new CategoryMod();
+        $arrData=$model->getAllCategory();
+
+    }
+
+    public function addCourse(){
+
+    }
+    public function manageCourse(){
+
     }
 }
 ?>

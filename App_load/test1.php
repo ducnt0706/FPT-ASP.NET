@@ -5,7 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Manage Class</title>
+    <title>Document</title>
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
@@ -18,15 +19,23 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="./Source/manage_class_style.css">
+    <style>
+
+    </style>
 </head>
 <body>
-<?php
-    include_once './Controller/Controller.php';
 
-    $controller=new Controller();
-?>
-
+<div class="container text-center mt-3">
+    <div class="row ">
+        <div class="col-sm-5">
+            <h4>gogo</h4>
+            <img src="./Source/workpane1.jpg" alt="">
+        </div>
+        <div class="col-sm-5">
+            <h3>Hello</h3>
+            <img src="./Source/workpane1.jpg" alt="">
+        </div>
+    </div>
+</div>
 </body>
 </html>
-
