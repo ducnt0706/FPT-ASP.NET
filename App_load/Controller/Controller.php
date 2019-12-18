@@ -4,6 +4,7 @@ include_once './Model/CategoryMod.php';
 include_once './Model/CourseMod.php';
 
 class Controller{
+    //TODO:Manage Trainee
     public function addTrainee(){
          $msg=null;
          if (isset($_POST['Name'])){
@@ -77,14 +78,14 @@ class Controller{
             include_once ('./View/TraineeList.php');
         }
     }
-
+    //TODO: Manage Trainer
     public function addTrainer(){
 
     }
     public function manageTrainer(){
 
     }
-
+    //TODO:
     public function addCategory(){
 
     }

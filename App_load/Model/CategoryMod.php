@@ -1,6 +1,7 @@
 <?php
 
-
+include_once 'connDb.php';
+include_once 'Category.php';
 class CategoryMod
 {
     public function getAllCategory(){
@@ -16,16 +17,6 @@ class CategoryMod
         }
         return $arrCategory;
     }
-    public function getDetailCategory($id){
-        $allCategory=$this->getAllCategory();
-        $detail=null;
-        foreach ($allCategory as $item){
-            if($id==$item->id){
-                $detail=$item;
-                break;
-            }
-        }
-        return $detail;
-    }
+
 }
 ?>

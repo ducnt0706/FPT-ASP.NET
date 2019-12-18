@@ -18,24 +18,20 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <style>
 
     </style>
 </head>
 <body>
 
-<div class="container text-center mt-3">
-    <div class="row ">
-        <div class="col-sm-5">
-            <h4>gogo</h4>
-            <img src="./Source/workpane1.jpg" alt="">
-        </div>
-        <div class="col-sm-5">
-            <h3>Hello</h3>
-            <img src="./Source/workpane1.jpg" alt="">
-        </div>
-    </div>
+
+<div id='demo'>
+    <div>Computing Reasearch</div>
+    <div>Database</div>
 </div>
+<script>
+    $('#demo').append("<div>hello</div>");
+</script>
 </body>
 </html>
