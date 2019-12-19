@@ -25,17 +25,34 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <link rel="stylesheet" href="./Source/manage_class_style.css">
+
+    <style>
+        div.card {
+            width: fit-content;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            text-align: center;
+            float: left;
+        }
+        .card-img-top{
+            opacity: 0.7;
+        }
+    </style>
 </head>
 <body>
 
 <?php
     include_once './Model/CategoryMod.php';
     include_once './Model/CourseMod.php';
+    include_once './Controller/Controller.php';
     //get data from category
     $catMod=new CategoryMod();
     $arrCategory=$catMod->getAllCategory();
 
-    //get data from CourseMod:
+    //handle adding new category
+    $control=new Controller();
+    $control->addCategory();
+    $control->manageCategory();
+
 
 ?>
 
@@ -56,7 +73,12 @@
 
                     echo "
                     <div>                   
-                        <button  class='btn btn-outline-success' data-toggle=\"collapse\" data-target='#demo".$cat->id."'><span class='fas fa-anchor'></span> $cat->name </button>
+                        <button  class='btn btn-outline-success' data-toggle=\"collapse\" data-target='#demo".$cat->id."'>
+                        <span class='fas fa-anchor'></span>
+                        <span>$cat->name</span>
+                        <a class='badge badge-warning' href='?ucatid=".$cat->id."'>Update</a>
+                        <a class='badge badge-danger' href='?dcattid=".$cat->id."'>Delete</a>
+                        </button>
                         <div id='demo".$cat->id."' class=\"collapse\" data-parent=\"#accordion\">
                                 
                         </div>
@@ -71,42 +93,58 @@
                 ?>
 
             </div>
+            <br>
+
+            <!-- Button to Open the Modal -->
+            <div class="text-center">
+                <button class="btn btn-warning" data-toggle="modal" data-target="#myModal" >Add new Category</button>
+            </div>
+            <?php
+
+            ?>
+            <!-- The Modal -->
+            <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <div class="modal-header bg-warning">
+                            <h4 class="modal-title text-danger">Adding Category</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body text-center">
+                            <form action="manage_class.php" method="post">
+                                <input type="text" name="aNameCat" placeholder="Insert for a category...">
+                                <br>
+                                <br>
+                                <button type="submit" class="btn btn-warning" >Create</button>
+                            </form>
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
         </div>
 
         <!--TODO:Show class available-->
-        <div class="col-sm-7">
-
+        <div class="col-sm-7 ">
             <br>
             <br>
-
-            <div class="card" >
-                <img class="card-img-top" src="./Source/class.jpg" alt="Photo">
+            <div class="card " >
+                <img class="card-img-top" src="./Source/work3.jpg" alt="Photo">
                 <div class="card-img-overlay">
-                    <h4 class="card-title">GCH0705</h4>
-                    <p class="card-text ">Application Development</p>
-                    <a href="#" class="btn btn-warning">See Profile</a>
+
                 </div>
             </div>
-
-            <div class="card" >
-                <img class="card-img-top" src="./Source/class.jpg" alt="Photo">
-                <div class="card-img-overlay">
-                    <h4 class="card-title">GCH0705</h4>
-                    <p class="card-text ">Application Development</p>
-                    <a href="#" class="btn btn-warning">See Profile</a>
-                </div>
-            </div>
-
-            <div class="card" >
-                <img class="card-img-top" src="./Source/class.jpg" alt="Photo">
-                <div class="card-img-overlay">
-                    <h4 class="card-title">GCH0705</h4>
-                    <p class="card-text ">Application Development</p>
-                    <a href="#" class="btn btn-warning">See Profile</a>
-                </div>
-            </div>
-
         </div>
+
     </div>
 </div>
 

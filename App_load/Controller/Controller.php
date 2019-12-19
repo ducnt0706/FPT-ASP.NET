@@ -18,7 +18,7 @@ class Controller{
             $user=$_POST['UserName'];
             $pass=$_POST['Pass'];
 
-            //TODO: do query update data
+            //TODO: do query insert data
             $connDb=new ConnDb();
             $conn=$connDb->getConn();
             $result=$conn->query("INSERT INTO trainee (Id, Name, DateOfBirth, Address, Description, Lang, Toeic, UserName, Pass) VALUES (NULL ,'$name', '$date', '$address', '$descript', '$lang', '$toeic', '$user', '$pass')");
@@ -85,14 +85,28 @@ class Controller{
     public function manageTrainer(){
 
     }
-    //TODO:
-    public function addCategory(){
 
+    //TODO: Add Category
+    public function addCategory(){
+        if(isset($_POST['aNameCat'])){
+
+            $name=$_POST['aNameCat'];
+            //TODO: do query insert data
+            $connDb=new ConnDb();
+            $conn=$connDb->getConn();
+            $conn->query("INSERT INTO category (Id, Name ) VALUES (NULL ,'$name')");
+
+            header("location: ./manage_class.php");
+        }
     }
     public function manageCategory(){
-        $model=new CategoryMod();
-        $arrData=$model->getAllCategory();
-
+        if(isset($_GET['dcattid'])){
+            $did=$_GET['dcattid'];
+            $connDb=new ConnDb();
+            $conn=$connDb->getConn();
+            $conn->query("DELETE FROM Category WHERE Id = '$did'");
+            header("location: ./manage_class.php");
+        }
     }
 
     public function addCourse(){
