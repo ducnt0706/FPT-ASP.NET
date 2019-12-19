@@ -113,7 +113,7 @@ class Controller{
         if(isset($_GET['ucatid'])&&isset($_GET['ucatname'])){
             $idcat=$_GET['ucatid'];
             $namecat=$_GET['ucatname'];
-            include_once './View/add_course.php';
+            include_once './View/CourseAdd.php';
         }elseif (isset($_POST['aNameCourse'])){
 
             header("location: ./manage_class.php");
