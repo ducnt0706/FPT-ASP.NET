@@ -18,20 +18,14 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <style>
 
-    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="./Source/manage_class_style.css">
 </head>
 <body>
-
-
-<div id='demo'>
-    <div>Computing Reasearch</div>
-    <div>Database</div>
-</div>
-<script>
-    $('#demo').append("<div>hello</div>");
-</script>
+    <?php
+        include_once './View/ClassAdd.php';
+    ?>
 </body>
 </html>
