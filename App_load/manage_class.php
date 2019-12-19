@@ -76,7 +76,7 @@
                         <button  class='btn btn-outline-success' data-toggle=\"collapse\" data-target='#demo".$cat->id."'>
                         <span class='fas fa-anchor'></span>
                         <span>$cat->name</span>
-                        <a class='badge badge-warning' href='?ucatid=".$cat->id."'>Update</a>
+                        <a class='badge badge-warning' href='?ucatid=".$cat->id."&ucatname=".$cat->name."'>Add</a>
                         <a class='badge badge-danger' href='?dcattid=".$cat->id."'>Delete</a>
                         </button>
                         <div id='demo".$cat->id."' class=\"collapse\" data-parent=\"#accordion\">
@@ -130,7 +130,6 @@
 
                 </div>
             </div>
-
         </div>
 
         <!--TODO:Show class available-->
@@ -141,8 +140,9 @@
                 <img class="card-img-top" src="./Source/work3.jpg" alt="Photo">
                 <div class="card-img-overlay">
                     <?php
-                    
+                        $control->addCourse();
                     ?>
+                    <a href="?test=1" class="clink badge badge-warning">test</a>
                 </div>
             </div>
         </div>

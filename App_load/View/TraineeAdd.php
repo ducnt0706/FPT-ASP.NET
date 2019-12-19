@@ -2,8 +2,7 @@
     <div>
         <?php
             if($msg!=null){
-                echo "<div class=\"alert alert-info alert-dismissible\">
-                            <button class=\"close\" data-dismiss=\"alert\">&times;</button>
+                echo "<div class=\"bg-info\">
                             <strong>$msg</strong>
                        </div>";
             }

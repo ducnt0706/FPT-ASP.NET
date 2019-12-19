@@ -110,7 +110,17 @@ class Controller{
     }
 
     public function addCourse(){
+        if(isset($_GET['ucatid'])&&isset($_GET['ucatname'])){
+            $idcat=$_GET['ucatid'];
+            $namecat=$_GET['ucatname'];
+            include_once './View/add_course.php';
+        }elseif (isset($_POST['aNameCourse'])){
 
+            header("location: ./manage_class.php");
+        }
+        else{
+
+        }
     }
     public function manageCourse(){
 
