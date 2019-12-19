@@ -3,7 +3,7 @@
         <h3>Adding new Course</h3>
     </div>
     <div >
-        <form action="manage_class.php" method="post">
+        <form action="manage_course.php" method="post">
 
             <div class="form-group">
                 <input type="text" value="<?php echo $namecat?>" readonly>

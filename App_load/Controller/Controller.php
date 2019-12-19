@@ -96,7 +96,7 @@ class Controller{
             $conn=$connDb->getConn();
             $conn->query("INSERT INTO category (Id, Name ) VALUES (NULL ,'$name')");
 
-            header("location: ./manage_class.php");
+            header("location: ./manage_course.php");
         }
     }
     public function manageCategory(){
@@ -105,7 +105,7 @@ class Controller{
             $connDb=new ConnDb();
             $conn=$connDb->getConn();
             $conn->query("DELETE FROM Category WHERE Id = '$did'");
-            header("location: ./manage_class.php");
+            header("location: ./manage_course.php");
         }
     }
 
@@ -125,7 +125,7 @@ class Controller{
             if ($result){
                 echo "<div>Adding Success</div>";
                 echo "<br>";
-                echo "<button class='btn btn-warning'><a class='text-decoration-none' href=\"manage_class.php\">Reload</a></button>";
+                echo "<button class='btn btn-warning'><a class='text-decoration-none' href=\"manage_course.php\">Reload</a></button>";
             }
         }
         else{
@@ -133,7 +133,13 @@ class Controller{
         }
     }
     public function manageCourse(){
-
+        if(isset($_GET['dcourseid'])){
+            $did=$_GET['dcourseid'];
+            $connDb=new ConnDb();
+            $conn=$connDb->getConn();
+            $conn->query("DELETE FROM Course WHERE Id = '$did'");
+            header("location: ./manage_course.php");
+        }
     }
 }
 ?>
