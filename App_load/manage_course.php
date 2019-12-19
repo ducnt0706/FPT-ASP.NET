@@ -88,7 +88,7 @@ $control->manageCourse();
                         echo "<script>
                                 $('#demo".$cat->id."').append('<div><span class=\"fas fa-angle-double-right\"></span><a class=\"infolink text-decoration-none\" > $course->name </a><a class=\"dlink badge badge-info\" >Delete</a></div>');
                                 $('a.dlink').attr('href','?dcourseid='+'$course->id');
-                                $('a.infolink').attr('href','?dcourseid='+'$course->id');
+                                $('a.infolink').attr('href','./manage_class.php?seecourseid='+'$course->id');
                               </script>";
                     }
                 }
