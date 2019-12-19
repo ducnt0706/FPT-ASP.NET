@@ -115,8 +115,18 @@ class Controller{
             $namecat=$_GET['ucatname'];
             include_once './View/CourseAdd.php';
         }elseif (isset($_POST['aNameCourse'])){
-
-            header("location: ./manage_class.php");
+            //TODO: Id, Name, Description, IdCategory
+            $idCategory=$_POST['IdCategory'];
+            $name=$_POST['aNameCourse'];
+            $descipt=$_POST['Description'];
+            $connDb=new ConnDb();
+            $conn=$connDb->getConn();
+            $result=$conn->query("INSERT INTO course (Id, Name, Description, IdCategory ) VALUES (NULL ,'$name','$descipt','$idCategory')");
+            if ($result){
+                echo "<div>Adding Success</div>";
+                echo "<br>";
+                echo "<button class='btn btn-warning'><a class='text-decoration-none' href=\"manage_class.php\">Reload</a></button>";
+            }
         }
         else{
 

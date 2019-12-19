@@ -142,7 +142,7 @@
                     <?php
                         $control->addCourse();
                     ?>
-                    <a href="?test=1" class="clink badge badge-warning">test</a>
+
                 </div>
             </div>
         </div>
