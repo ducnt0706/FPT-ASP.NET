@@ -24,7 +24,6 @@
                 echo "<td>$class->course</td>";
                 echo "<td>
                         <a class='badge badge-info' href='?vclassid=".$class->id."'>View</a>
-                        <a class='badge badge-warning' href='?uclassid=".$class->id."'>Update</a>
                         <a class='badge badge-danger' href='?dclassid=".$class->id."'>Delete</a>
                      </td>";
                 ?>
@@ -34,4 +33,7 @@
         ?>
         </tbody>
     </table>
-
+</div>
+<div class="text-center">
+    <button class="btn btn-outline-warning"><a class="text-decoration-none" href="add_class.php">Create new class</a></button>
+</div>

@@ -6,24 +6,53 @@
                 <div class="container">
                     <div class="text-center mt-5">
                         <h3>Adding new Class</h3>
+                        <?php
+                        if($msg!=null){
+                            echo "<div class='text-light'>$msg</div>";
+                        }
+                        ?>
                     </div>
+                    <!--TODO: Id,Name,Topic,Description, IdCourse,IdTrainer-->
                     <div class="text-center">
-                        <form action="" method="post">
+                        <form action="add_class.php" method="post">
 
                             <div class="form-group">
-                                <input type="text" value="<?php echo $namecat?>" readonly>
+                                <input type="text" name="className" placeholder="Name of class"  required>
                             </div>
 
                             <div class="form-group">
-                                <input type="hidden" name="IdCategory" value="<?php echo $idcat?>" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" name="aNameCourse" placeholder="Name of Course" required>
-                            </div>
-                            <div class="form-group">
-                                <textarea name="Description" placeholder="Description about Course"></textarea>
+                                <input type="text" name="Topic" placeholder="Topic title..."  required>
                             </div>
 
+                            <div class="form-group">
+                                <input type="text" name="Description" placeholder="Description for topic..." required>
+                            </div>
+
+                            <!--How to get IdCourse and IdTrainer-->
+                            <div class="form-group">
+                                <select name="IdCourse">
+                                    <?php
+                                        foreach ($courseinfo as $row){
+                                            $name=$row['Name'];
+                                            $id=$row['Id'];
+                                            $cat=$row['Category'];
+                                            echo "<option value='$id'>$cat : $name</option>";
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <select name="IdTrainer">
+                                    <?php
+                                    foreach ($trainerinfo as $row){
+                                        $name=$row['Name'];
+                                        $id=$row['Id'];
+                                        echo "<option value='$id'>$name</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
                             <button type="submit" class="btn btn-warning" >Create</button>
                         </form>
                     </div>

@@ -9,7 +9,7 @@ class Classroom
     public $descript;
     public $course;
     public $trainer;
-    //TODO: Id,Name,Topic,Description, Course,Trainer
+    //TODO: Id,Name,Topic,Description, IdCourse,IdTrainer
 
     /**
      * Classroom constructor.

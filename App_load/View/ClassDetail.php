@@ -1,2 +1,12 @@
+<!--TODO: Id,Name,Topic,Description, Course,Trainer-->
+<div class="container">
+    <div class="text-center mt-5">
+        <h3><?php echo $class->name?></h3>
+    </div>
+    <div>
+        <h4 class="text-info">Topic: <?php echo $class->topic?></h4>
+        <p><?php echo $class->descript?></p>
+    </div>
 
-<div><?php echo $class->name?></div>
+</div>
+

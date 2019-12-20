@@ -144,6 +144,47 @@ class Controller{
     }
 
     public function addClass(){
+        $msg=null;
+        //TODO: Id,Name,Topic,Description, IdCourse,IdTrainer
+        if(isset($_POST['className'])){
+            $name=$_POST['className'];
+            $topic=$_POST['Topic'];
+            $des=$_POST['Description'];
+            $idcourse=$_POST['IdCourse'];
+            $idtrainer=$_POST['IdTrainer'];
+            $connDb=new ConnDb();
+            $conn=$connDb->getConn();
+            $result=$conn->query("INSERT INTO class (Id,Name,Topic,Description, IdCourse,IdTrainer) VALUES (NULL ,'$name','$topic','$des','$idcourse','$idtrainer')");
+
+            if(!$result){
+                $msg='Adding class fail!';
+            }else{
+                $msg='Adding class success!';
+                $connDb=new ConnDb();
+                $conn=$connDb->getConn();
+                $query="SELECT c.Id as Id,c.Name as Name,cat.Name as Category
+                    FROM Course as c
+                    INNER JOIN Category as cat ON c.IdCategory=cat.Id
+                    ";
+                $courseinfo=$conn->query($query);
+                $trainerinfo=$conn->query("SELECT Id,Name FROM Trainer");
+
+                include_once './View/ClassAdd.php';
+            }
+
+
+        }else{
+            $connDb=new ConnDb();
+            $conn=$connDb->getConn();
+            $query="SELECT c.Id as Id,c.Name as Name,cat.Name as Category
+                    FROM Course as c
+                    INNER JOIN Category as cat ON c.IdCategory=cat.Id
+                    ";
+            $courseinfo=$conn->query($query);
+            $trainerinfo=$conn->query("SELECT Id,Name FROM Trainer");
+
+            include_once './View/ClassAdd.php';
+        }
 
     }
     public function manageClass(){
@@ -151,6 +192,7 @@ class Controller{
             $modal=new ClassroomMod();
             $arrClass=$modal->getClassByCourseId($_GET['seecourseid']);
             include_once './View/ClassList.php';
+
         }
         if (isset($_GET['dclassid'])){
             $did=$_GET['dclassid'];
