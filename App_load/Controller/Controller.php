@@ -152,6 +152,20 @@ class Controller{
             $arrClass=$modal->getClassByCourseId($_GET['seecourseid']);
             include_once './View/ClassList.php';
         }
+        if (isset($_GET['dclassid'])){
+            $did=$_GET['dclassid'];
+            $connDb=new ConnDb();
+            $conn=$connDb->getConn();
+            $conn->query("DELETE FROM Class WHERE Id = '$did'");
+            header("location: ./manage_course.php");
+        }elseif (isset($_GET['vclassid'])){
+            $modal=new ClassroomMod();
+            $class=$modal->getDetailClassById($_GET['vclassid']);
+            include_once './View/ClassDetail.php';
+        }else{
+            return;
+        }
+
     }
 
 }
