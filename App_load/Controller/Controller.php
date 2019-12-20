@@ -3,6 +3,7 @@ include_once './Model/TraineeMod.php';
 include_once './Model/CategoryMod.php';
 include_once './Model/CourseMod.php';
 include_once './Model/ClassroomMod.php';
+include_once './Model/TrainerMod.php';
 
 class Controller{
     //TODO:Manage Trainee
@@ -29,7 +30,7 @@ class Controller{
                 $msg="Adding successfully";
             }
 
-            include_once './View/TraineeAdd.php';
+             header("Location: ./manage_trainee.php");
         }else{
              include_once './View/TraineeAdd.php';
          }
@@ -79,12 +80,63 @@ class Controller{
             include_once ('./View/TraineeList.php');
         }
     }
+
     //TODO: Manage Trainer
     public function addTrainer(){
+        //TODO: Id, Name, UserName, Pass
+        $msg=null;
+        if (isset($_POST['Name'])){
+            $name=$_POST['Name'];
+            $user=$_POST['UserName'];
+            $pass=$_POST['Pass'];
+            //TODO: do query insert data
+            $connDb=new ConnDb();
+            $conn=$connDb->getConn();
+            $result=$conn->query("INSERT INTO trainer (Id, Name,UserName, Pass) VALUES (NULL ,'$name', '$user', '$pass')");
+            if(!$result){
+                $msg="Adding fail!";
+            }else{
+                $msg="Adding successfully";
+            }
 
+            header("Location: ./manage_trainer.php");
+        }else{
+            include_once './View/TrainerAdd.php';
+        }
     }
     public function manageTrainer(){
+        if (isset($_GET['dtrainertid'])){
+            $did=$_GET['dtrainertid'];
+            $connDb=new ConnDb();
+            $conn=$connDb->getConn();
+            $conn->query("DELETE FROM Trainer WHERE Id = '$did'");
+            header("Location: ./manage_trainer.php");
+        }elseif (isset($_GET['utrainerid'])){
+            $uid=$_GET['utrainerid'];
+            //TODO: get trainer
+            $model=new TrainerMod();
+            $trainer=$model->getDetailTrainer($uid);
 
+            include_once ('./View/TrainerUpdate.php');
+        }elseif (isset($_POST['idTrainerU'])){
+            $id=$_POST['idTrainerU'];
+            $name=$_POST['Name'];
+            $user=$_POST['UserName'];
+            $pass=$_POST['Pass'];
+
+            //TODO: do query update data
+            $connDb=new ConnDb();
+            $conn=$connDb->getConn();
+            $conn->query("UPDATE Trainer SET Name='$name',UserName='$user', Pass='$pass' WHERE Id = '$id'");
+            header("Location: ./manage_trainer.php");
+        }
+        else
+        {
+            $model=new TrainerMod();
+            $arrData=$model->getAllTrainer();
+
+            include_once ('./View/TrainerList.php');
+        }
     }
 
     //TODO: Add Category
@@ -171,8 +223,6 @@ class Controller{
 
                 include_once './View/ClassAdd.php';
             }
-
-
         }else{
             $connDb=new ConnDb();
             $conn=$connDb->getConn();

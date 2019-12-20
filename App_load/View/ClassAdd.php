@@ -2,7 +2,7 @@
     <div class="container myclass">
         <div class="row">
             <!--TODO:Form -->
-            <div class="col-sm-6 bg-success">
+            <div class="col-sm-6 ">
                 <div class="container">
                     <div class="text-center mt-5">
                         <h3>Adding new Class</h3>
@@ -21,11 +21,11 @@
                             </div>
 
                             <div class="form-group">
-                                <input type="text" name="Topic" placeholder="Topic title..."  required>
+                                <textarea name="Topic" placeholder="Topic title..."  required></textarea>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" name="Description" placeholder="Description for topic..." required>
+                                <textarea name="Description" placeholder="Description for topic..." required></textarea>
                             </div>
 
                             <!--How to get IdCourse and IdTrainer-->
@@ -60,7 +60,7 @@
             </div>
             <!--TODO:Decoration -->
             <div class="col-sm-6 ">
-                <img class="card-img-top" src="./Source/work7.jpg" alt="Photo">
+                <img class="card-img-top" src="./Source/bg1.jpg" alt="Photo">
             </div>
         </div>
     </div>

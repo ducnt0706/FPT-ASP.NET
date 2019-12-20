@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="./Source/manage_class_style.css">
 </head>
 <body>
+
     <?php
         include_once 'Controller/Controller.php';
         $controll=new Controller();

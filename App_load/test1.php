@@ -24,11 +24,9 @@
     <link rel="stylesheet" href="./Source/manage_class_style.css">
 </head>
 <body>
+
     <?php
         include_once './View/ClassAdd.php';
-         $id=1;
-         $string="location: ./manage_class.php?seecourseid=".$id;
-         echo $string;
     ?>
 </body>
 </html>
