@@ -22,12 +22,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
 
-    <style>
-        *{
-            font-family: 'Raleway', sans-serif;
-        }
-
-    </style>
+    <link rel="stylesheet" href="Source/traineeAdd.css">
 
 </head>
 <body>

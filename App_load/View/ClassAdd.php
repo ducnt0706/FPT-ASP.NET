@@ -1,9 +1,7 @@
 <div class="container-fluid pt-5">
     <div class="container myclass">
         <div class="row">
-            <div class="col-sm-6 ">
-                <img class="card-img-top" src="./Source/work7.jpg" alt="Photo">
-            </div>
+            <!--TODO:Form -->
             <div class="col-sm-6 bg-success">
                 <div class="container">
                     <div class="text-center mt-5">
@@ -31,6 +29,11 @@
                     </div>
                 </div>
             </div>
+            <!--TODO:Decoration -->
+            <div class="col-sm-6 ">
+                <img class="card-img-top" src="./Source/work7.jpg" alt="Photo">
+            </div>
         </div>
     </div>
 </div>
+

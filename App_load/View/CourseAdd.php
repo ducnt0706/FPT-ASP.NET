@@ -1,3 +1,6 @@
+<div class="">
+    <button type="button" class="close" ><a href="manage_course.php">&times;</a></button>
+</div>
 <div class="container">
     <div class="text-center">
         <h3>Adding new Course</h3>

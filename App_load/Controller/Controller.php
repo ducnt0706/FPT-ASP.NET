@@ -2,6 +2,7 @@
 include_once './Model/TraineeMod.php';
 include_once './Model/CategoryMod.php';
 include_once './Model/CourseMod.php';
+include_once './Model/ClassroomMod.php';
 
 class Controller{
     //TODO:Manage Trainee
@@ -141,5 +142,17 @@ class Controller{
             header("location: ./manage_course.php");
         }
     }
+
+    public function addClass(){
+
+    }
+    public function manageClass(){
+        if(isset($_GET['seecourseid'])){
+            $modal=new ClassroomMod();
+            $arrClass=$modal->getClassByCourseId($_GET['seecourseid']);
+            include_once './View/ClassList.php';
+        }
+    }
+
 }
 ?>

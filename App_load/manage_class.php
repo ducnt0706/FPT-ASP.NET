@@ -19,18 +19,25 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="./Source/manage_class_style.css">
+
 </head>
 <body>
+    <?php include_once 'Controller/Controller.php';
+    $control=new Controller();
+    ?>
     <div class="container">
         <div class="row">
             <!--TODO:Load class-->
             <div class="col-sm-5">
-                
-
+                <?php
+                    $control->manageClass();
+                ?>
             </div>
             <!--TODO:Load topic-->
             <div class="col-sm-7">
-
+                <?php
+                     $control->manageClass();
+                ?>
             </div>
         </div>
 

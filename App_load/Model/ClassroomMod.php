@@ -6,7 +6,12 @@ class ClassroomMod{
     public function getClassByCourseId($id){
         $connDb=new ConnDb();
         $conn=$connDb->getConn();
-        $data=$conn->query("SELECT * FROM Class WHERE IdCourse='$id'");
+        $query="SELECT cl.Id as Id,cl.Name as Name,cl.Topic as Topic,cl.Description as Description,c.Name as Course ,t.Name as Trainer 
+                FROM class as cl
+                INNER JOIN Course as c ON cl.IdCourse=c.Id
+                INNER JOIN Trainer as t ON cl.IdTrainer=t.Id
+                WHERE c.Id='$id'";
+        $data=$conn->query("$query");
         $arrClass=array();
         foreach ($data as $row){
             //TODO: Id,Name,Topic,Description, IdCourse,IdTrainer
@@ -14,9 +19,9 @@ class ClassroomMod{
             $name=$row['Name'];
             $topic=$row['Topic'];
             $description=$row['Description'];
-            $idCourse=$row['IdCourse'];
-            $idTrainer=$row['IdTrainer'];
-            array_push($arrClass,new Classroom($id,$name,$topic,$description,$idCourse,$idTrainer));
+            $course=$row['Course'];
+            $trainer=$row['Trainer'];
+            array_push($arrClass,new Classroom($id,$name,$topic,$description,$course,$trainer));
         }
         return $arrClass;
     }

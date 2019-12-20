@@ -7,9 +7,9 @@ class Classroom
     public $name;
     public $topic;
     public $descript;
-    public $idCourse;
-    public $idTrainer;
-    //TODO: Id,Name,Topic,Description, IdCourse,IdTrainer
+    public $course;
+    public $trainer;
+    //TODO: Id,Name,Topic,Description, Course,Trainer
 
     /**
      * Classroom constructor.
@@ -17,17 +17,17 @@ class Classroom
      * @param $name
      * @param $topic
      * @param $descript
-     * @param $idCourse
-     * @param $idTrainer
+     * @param $Course
+     * @param $Trainer
      */
-    public function __construct($id, $name, $topic, $descript, $idCourse, $idTrainer)
+    public function __construct($id, $name, $topic, $descript, $course, $trainer)
     {
         $this->id = $id;
         $this->name = $name;
         $this->topic = $topic;
         $this->descript = $descript;
-        $this->idCourse = $idCourse;
-        $this->idTrainer = $idTrainer;
+        $this->course = $course;
+        $this->trainer = $trainer;
     }
 
 }
