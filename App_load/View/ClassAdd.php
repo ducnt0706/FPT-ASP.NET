@@ -8,7 +8,7 @@
                         <h3>Adding new Class</h3>
                         <?php
                         if($msg!=null){
-                            echo "<div class='text-light'>$msg</div>";
+                            echo "<div class='text-warning'>$msg</div>";
                         }
                         ?>
                     </div>
@@ -18,6 +18,10 @@
 
                             <div class="form-group">
                                 <input type="text" name="className" placeholder="Name of class"  required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" name="Pass" placeholder="Pass for class"  required>
                             </div>
 
                             <div class="form-group">

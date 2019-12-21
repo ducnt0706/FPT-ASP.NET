@@ -197,16 +197,17 @@ class Controller{
 
     public function addClass(){
         $msg=null;
-        //TODO: Id,Name,Topic,Description, IdCourse,IdTrainer
+        //TODO: Id,Name,Pass,Topic,Description, IdCourse,IdTrainer
         if(isset($_POST['className'])){
             $name=$_POST['className'];
+            $pass=$_POST['Pass'];
             $topic=$_POST['Topic'];
             $des=$_POST['Description'];
             $idcourse=$_POST['IdCourse'];
             $idtrainer=$_POST['IdTrainer'];
             $connDb=new ConnDb();
             $conn=$connDb->getConn();
-            $result=$conn->query("INSERT INTO class (Id,Name,Topic,Description, IdCourse,IdTrainer) VALUES (NULL ,'$name','$topic','$des','$idcourse','$idtrainer')");
+            $result=$conn->query("INSERT INTO class (Id,Name,Pass,Topic,Description, IdCourse,IdTrainer) VALUES (NULL ,'$name','$pass','$topic','$des','$idcourse','$idtrainer')");
 
             if(!$result){
                 $msg='Adding class fail!';
