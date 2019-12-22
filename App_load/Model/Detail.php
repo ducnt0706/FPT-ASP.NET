@@ -3,21 +3,20 @@
 
 class Detail
 {
-    public $name;
+    //TODO:className,Topic, Description, courseName, trainerName
+    public $className;
     public $topic;
     public $descript;
+    public $courseName;
+    public $trainerName;
 
-    /**
-     * Detail constructor.
-     * @param $name
-     * @param $topic
-     * @param $descript
-     */
-    public function __construct($name, $topic, $descript)
+    public function __construct($className, $topic, $descript, $courseName, $trainerName)
     {
-        $this->name = $name;
+        $this->className = $className;
         $this->topic = $topic;
         $this->descript = $descript;
+        $this->courseName = $courseName;
+        $this->trainerName = $trainerName;
     }
 
 

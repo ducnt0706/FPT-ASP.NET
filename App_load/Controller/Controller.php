@@ -4,6 +4,7 @@ include_once './Model/CategoryMod.php';
 include_once './Model/CourseMod.php';
 include_once './Model/ClassroomMod.php';
 include_once './Model/TrainerMod.php';
+include_once './Model/DetailMod.php';
 
 class Controller{
     //TODO:Manage Trainee
@@ -295,8 +296,21 @@ class Controller{
     }
 
     public function detailView(){
-
+        $modal=new DetailMod();
+        //need session
+        $arrDetail=$modal->getAllDetailByTraineeId(1);
         include_once './View/DetailShow.php';
+    }
+
+    public function detailClassView(){
+        if(isset($_GET['classname'])){
+            $name=$_GET['classname'];
+            $modal=new DetailMod();
+            //need session
+            $detail=$modal->getDetailCLassByClassName(1,$name);
+            include_once './View/DetailShowClass.php';
+        }
+
     }
 }
 ?>
