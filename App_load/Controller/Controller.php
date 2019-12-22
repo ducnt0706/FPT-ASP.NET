@@ -280,7 +280,11 @@ class Controller{
             $classinfo=$modal->getDetailClassById($cid);
 
             if($pass==$classinfo->pass){
-
+                $cid=$_POST['IdClass'];
+                $idtrainee=$_POST[''];
+                $connDb=new ConnDb();
+                $conn=$connDb->getConn();
+                $conn->query("INSERT INTO detail (Id,IdTrainee,IdClass) VALUES (NULL ,'$idtrainee','$cid') ");
                 $msg="Resign Success!";
             }else{
                 $msg="Resign Fail!";
@@ -288,6 +292,11 @@ class Controller{
             include_once './View/ClassHandelResign.php';
         }
 
+    }
+
+    public function detailView(){
+
+        include_once './View/DetailShow.php';
     }
 }
 ?>

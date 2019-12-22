@@ -11,7 +11,6 @@
             </h4>
             <br>
             <form action="?func=<?php echo $idclass ?>" method="post">
-                <input name="IdTrainee" type="hidden" value=""><!--need session to get id trainee-->
                 <input name="IdClass" type="hidden" value="<?php echo $idclass ?>">
                 <input name="passwd" type="text" placeholder="Enter Password.." required>
                 <br>

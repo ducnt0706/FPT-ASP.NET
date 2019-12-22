@@ -14,6 +14,7 @@
                     <div class="text-center">
                         <div class="card-body">
                             <h4 class="card-title">Name: <?php echo $data->name?></h4>
+                            <p>ID: <?php echo $data->id?></p>
                             <p>Date of Birth: <?php echo $data->date?></p>
                             <p>Address: <?php echo $data->address?></p>
                             <p>Description: <?php echo $data->descript?></p>

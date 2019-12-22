@@ -31,12 +31,14 @@
 <?php
 include_once './Model/CategoryMod.php';
 include_once './Model/CourseMod.php';
+include_once './Controller/Controller.php';
 //get data from category
 $catMod=new CategoryMod();
 $arrCategory=$catMod->getAllCategory();
 
 //get data from CourseMod:
 
+$controller=new Controller();
 ?>
 
 <div class="container">
@@ -85,35 +87,9 @@ $arrCategory=$catMod->getAllCategory();
         <!--TODO:Show class available-->
         <div class="col-sm-7">
 
-            <br>
-            <br>
-
-            <div class="card" >
-                <img class="card-img-top" src="./Source/class.jpg" alt="Photo">
-                <div class="card-img-overlay">
-                    <h4 class="card-title">GCH0705</h4>
-                    <p class="card-text ">Application Development</p>
-                    <a href="#" class="btn btn-warning">See Profile</a>
-                </div>
-            </div>
-
-            <div class="card" >
-                <img class="card-img-top" src="./Source/class.jpg" alt="Photo">
-                <div class="card-img-overlay">
-                    <h4 class="card-title">GCH0705</h4>
-                    <p class="card-text ">Application Development</p>
-                    <a href="#" class="btn btn-warning">See Profile</a>
-                </div>
-            </div>
-
-            <div class="card" >
-                <img class="card-img-top" src="./Source/class.jpg" alt="Photo">
-                <div class="card-img-overlay">
-                    <h4 class="card-title">GCH0705</h4>
-                    <p class="card-text ">Application Development</p>
-                    <a href="#" class="btn btn-warning">See Profile</a>
-                </div>
-            </div>
+        <?php
+            $controller->detailView();
+        ?>
 
         </div>
     </div>
