@@ -261,5 +261,33 @@ class Controller{
 
     }
 
+    public function classList(){
+        $msg=null;
+        if(isset($_GET['courseid'])){
+            $modal=new ClassroomMod();
+            $arrClass=$modal->getClassByCourseId($_GET['courseid']);
+            include_once './View/ClassLoad.php';
+
+        }elseif (isset($_GET['enclassid']) && isset($_GET['course'])&& isset($_GET['name'])){
+            $idclass=$_GET['enclassid'];
+            $name=$_GET['name'];
+            $course=$_GET['course'];
+            include_once './View/ClassResign.php';
+        }elseif (isset($_GET['func']) && isset($_POST['passwd'])){
+            $cid=$_GET['func'];
+            $pass=$_POST['passwd'];
+            $modal=new ClassroomMod();
+            $classinfo=$modal->getDetailClassById($cid);
+
+            if($pass==$classinfo->pass){
+
+                $msg="Resign Success!";
+            }else{
+                $msg="Resign Fail!";
+            }
+            include_once './View/ClassHandelResign.php';
+        }
+
+    }
 }
 ?>

@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Manage Class</title>
+    <title>View Class</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
@@ -56,16 +56,25 @@ $arrCategory=$catMod->getAllCategory();
 
                     echo "
                     <div>                   
-                        <button  class='btn btn-outline-success' data-toggle=\"collapse\" data-target='#demo".$cat->id."'><span class='fas fa-anchor'></span> $cat->name </button>
+                        <button  class='btn btn-outline-success' data-toggle=\"collapse\" data-target='#demo".$cat->id."'>
+                        <span class='fas fa-anchor'></span>
+                        <span>$cat->name</span>
+                        </button>
                         <div id='demo".$cat->id."' class=\"collapse\" data-parent=\"#accordion\">
                                 
                         </div>
                     </div>
                          ";
                     foreach ($arrCourse as $course){
+
                         echo "<script>
-                                $('#demo".$cat->id."').append('<div>$course->name</div>'); 
+                                $('#demo".$cat->id."').append('<div><span class=\"fas fa-angle-double-right\"></span><a class=\"text-decoration-none\"> $course->name </a></div>');
                               </script>";
+                        ?>
+                        <script>
+                            $('#demo<?php echo $cat->id ?>').append("<a class='badge badge-success' href='./resign_class.php?courseid=<?php echo $course->id ?>'>Seemore</a>")
+                        </script>
+                        <?php
                     }
                 }
                 ?>
