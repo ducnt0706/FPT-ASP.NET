@@ -1,26 +1,28 @@
 <?php
-session_start();
-if (isset($_POST['username'])) {
-        // Set variables to represent data from database
-	$dbUsname = "admin";
-	$dbPassword = "test1";
-	$uid = "1111";
-	
-	// Set the posted data from the form into local variables
-	$usname = strip_tags($_POST['username']);
-	$paswd = strip_tags($_POST['password']);
-	
-	// Check if the username and the password they entered was correct
-	if ($usname == $dbUsname && $paswd == $dbPassword) {
-		// Set session 
-		$_SESSION['username'] = $usname;
-		$_SESSION['id'] = $uid;
-		// Now direct to users feed
-		header("Location: user.php");
-	} else {
-		echo "<h2>Oops that username or password combination was incorrect.
-        <br /> Please try again.</h2>";
-	}
-	
+require_once './functions.php';
+// require_once './index.php';
+
+$error = $user = $pass = "";
+
+if (isset($_POST['user'])) {
+    $user = sanitizeString($_POST['user']);
+    $pass = sanitizeString($_POST['pass']);
+    if ($user == "" || $pass == "") {
+        $error = "Not all fields was entered";
+    } else {
+        $token = passwordToToken($pass);
+        $result = queryMysql("SELECT * FROM adaccount WHERE UserName = '$user' AND Pass = '$token' AND status='1'");
+        if ($result->num_rows == 0) {
+            $error = "Username/Password invalid";
+        } else {
+            session_start();
+            $_SESSION['uId'] = mysqli_fetch_array($result)[0];
+            $_SESSION['user'] = $user;
+			$_SESSION['pass'] = $pass;
+			
+            header("Location: index.php"); //redirect to index.php
+            die("You already log in. Please <a href='index2.php'>click here</> to continue.");
+        }
+    }
 }
 ?>
