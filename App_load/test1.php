@@ -26,7 +26,7 @@
 <body>
 
     <?php
-        include_once './View/ClassAdd.php';
+        include_once './View/header.php';
     ?>
 </body>
 </html>

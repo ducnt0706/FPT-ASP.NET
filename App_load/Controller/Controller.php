@@ -312,5 +312,49 @@ class Controller{
         }
 
     }
+
+    public function adminLogin(){
+        $error = $user = $pass=$name = "";
+        if (isset($_POST['user'])) {
+            $user = $_POST['user'];
+            $pass = $_POST['pass'];
+            if ($user == "" || $pass == "") {
+                $error = "Not all fields was entered";
+            } else {
+                $connDb=new ConnDb();
+                $conn=$connDb->getConn();
+                $result=$conn->query("SELECT * FROM AdAccount WHERE UserName = '$user' AND Pass='$pass'");
+                foreach ($result as $item){
+                    $name=$item['Name'];
+                    break;
+                }
+                if ($result->num_rows == 0) {
+                    $error = "Username/Password invalid";
+                } else {
+                    session_start();
+                    $_SESSION['adId'] = mysqli_fetch_array($result)['Id'];
+                    $_SESSION['name'] = $name;
+                    $_SESSION['pass'] = $pass;
+                    header("Location: index_admin.php");
+                }
+            }
+        }
+    }
+    public function trainerLogin(){
+
+    }
+    public function traineeLogin(){
+
+    }
+    public function logout(){
+        if(isset($_GET['logout'])){
+            session_start();
+            $_SESSION = array();
+            unset($_SESSION);
+            session_destroy();
+            header("Location:index.php");
+            exit;
+        }
+    }
 }
 ?>
