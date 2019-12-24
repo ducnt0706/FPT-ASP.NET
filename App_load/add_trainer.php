@@ -24,6 +24,10 @@
 </head>
 <body>
 <?php
+include_once 'View/HeadAdmin.php';
+?>
+<br>
+<?php
     include_once 'Controller/Controller.php';
     $controll=new Controller();
     $controll->addTrainer();

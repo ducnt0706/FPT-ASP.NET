@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -28,6 +29,7 @@
 </head>
 <body>
 
+
 <?php
 include_once './Model/CategoryMod.php';
 include_once './Model/CourseMod.php';
@@ -38,9 +40,12 @@ $arrCategory=$catMod->getAllCategory();
 
 //get data from CourseMod:
 
-$controller=new Controller();
 ?>
-
+<?php
+include_once 'View/HeadTrainee.php';
+?>
+<br>
+<br>
 <div class="container">
     <div class="row">
 
@@ -88,6 +93,7 @@ $controller=new Controller();
         <div class="col-sm-7">
 
         <?php
+            $controller=new Controller();
             $controller->detailView();
         ?>
 

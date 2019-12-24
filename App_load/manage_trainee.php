@@ -26,12 +26,13 @@
 
 </head>
 <body>
-
+<?php include_once 'View/HeadTrainer.php'; ?>
 <?php
 include_once 'Controller/Controller.php';
 
 $controller=new Controller();
 $controller->manageTrainee();
+
 
 ?>
 

@@ -1,5 +1,6 @@
 <br>
 <br>
+
 <?php
     foreach ($arrDetail as $detail){
         ?>

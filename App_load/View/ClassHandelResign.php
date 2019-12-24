@@ -1,3 +1,5 @@
+<br>
+<br>
 <div class="container">
     <div class="text-center">
         <?php
@@ -6,8 +8,7 @@
                       <button class=\"btn btn-warning\"><a href=\"view_class.php\">Continue</a></button>
                       ";
             }else{
-                echo "<h4>$msg</h4>
-                      ";
+                echo "<h4>$msg</h4>";
             }
         ?>
     </div>

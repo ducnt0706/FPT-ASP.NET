@@ -19,6 +19,9 @@
                         ?>
                         <form action="add_trainee.php" method="post">
                             <div class="form-group">
+                                <input type="text" name="Id" placeholder="MSSV.." required>
+                            </div>
+                            <div class="form-group">
                                 <input type="text" name="Name" placeholder="Name" required>
                             </div>
                             <div class="form-group">

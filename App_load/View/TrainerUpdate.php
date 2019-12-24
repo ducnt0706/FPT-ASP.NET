@@ -1,3 +1,5 @@
+<br>
+<br>
 <div class="text-center">
     <h4>Update trainer</h4>
 </div>
@@ -5,7 +7,7 @@
     <div class="text-center">
         <form action="manage_trainer.php" method="post">
             <div class="form-group">
-                <input type="hidden" name="idTrainerU" value="<?php echo $uid ?>" readonly>
+                <input type="text" name="idTrainerU" value="<?php echo $uid ?>" readonly>
             </div>
             <div class="form-group">
                 <input type="text" name="Name"  placeholder="Name" required value="<?php echo $trainer->name ?>">

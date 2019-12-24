@@ -22,9 +22,14 @@
 
 </head>
 <body>
+<?php
+include_once 'View/HeadTrainee.php';
+?>
+
 <?php include_once 'Controller/Controller.php';
 $control=new Controller();
 ?>
+
 <div class="container">
     <div class="row">
         <!--TODO:Load class-->

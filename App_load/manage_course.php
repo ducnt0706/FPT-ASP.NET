@@ -42,6 +42,7 @@
 <body>
 
 <?php
+include_once 'View/HeadTrainer.php';
 include_once './Model/CategoryMod.php';
 include_once './Model/CourseMod.php';
 include_once './Controller/Controller.php';
@@ -56,7 +57,7 @@ $control->manageCategory();
 
 $control->manageCourse();
 ?>
-
+<br>
 <div class="container">
     <div class="row">
 

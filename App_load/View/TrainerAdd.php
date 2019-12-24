@@ -5,6 +5,9 @@
             <!--TODO:Form -->
             <div class="col-sm-6 bg-success">
                 <div class="container">
+                    <br>
+                    <br>
+                    <br>
                     <div class="text-center">
                         <h4>Adding new Trainer</h4>
                     </div>

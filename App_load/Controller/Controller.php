@@ -11,8 +11,9 @@ class Controller{
     public function addTrainee(){
          $msg=null;
          if (isset($_POST['Name'])){
-                //MUST DATA DO: addName, DateOfBirth, Address, Description, Lang, Toeic, UserName, Pass)
-            $name=$_POST['Name'];
+                //MUST DATA DO: Id,addName, DateOfBirth, Address, Description, Lang, Toeic, UserName, Pass)
+             $id=$_POST['Id'];
+             $name=$_POST['Name'];
             $date=$_POST['DateOfBirth'];
             $address=$_POST['Address'];
             $descript=$_POST['Description'];
@@ -24,7 +25,7 @@ class Controller{
             //TODO: do query insert data
             $connDb=new ConnDb();
             $conn=$connDb->getConn();
-            $result=$conn->query("INSERT INTO trainee (Id, Name, DateOfBirth, Address, Description, Lang, Toeic, UserName, Pass) VALUES (NULL ,'$name', '$date', '$address', '$descript', '$lang', '$toeic', '$user', '$pass')");
+            $result=$conn->query("INSERT INTO trainee (Id, Name, DateOfBirth, Address, Description, Lang, Toeic, UserName, Pass) VALUES ('$id' ,'$name', '$date', '$address', '$descript', '$lang', '$toeic', '$user', '$pass')");
             if(!$result){
                 $msg="Adding fail!";
             }else{
@@ -282,7 +283,7 @@ class Controller{
 
             if($pass==$classinfo->pass){
                 $cid=$_POST['IdClass'];
-                $idtrainee=$_POST[''];
+                $idtrainee=$_SESSION['tid'];
                 $connDb=new ConnDb();
                 $conn=$connDb->getConn();
                 $conn->query("INSERT INTO detail (Id,IdTrainee,IdClass) VALUES (NULL ,'$idtrainee','$cid') ");
@@ -296,18 +297,22 @@ class Controller{
     }
 
     public function detailView(){
-        $modal=new DetailMod();
-        //need session
-        $arrDetail=$modal->getAllDetailByTraineeId(1);
-        include_once './View/DetailShow.php';
+            $id=$_SESSION['tid'];
+            $modal=new DetailMod();
+            //need session
+            $arrDetail=$modal->getAllDetailByTraineeId($id);
+            include_once './View/DetailShow.php';
+
+
     }
 
     public function detailClassView(){
         if(isset($_GET['classname'])){
             $name=$_GET['classname'];
+            $idtrainee=$_SESSION['tid'];
             $modal=new DetailMod();
             //need session
-            $detail=$modal->getDetailCLassByClassName(1,$name);
+            $detail=$modal->getDetailCLassByClassName($idtrainee,$name);
             include_once './View/DetailShowClass.php';
         }
 
@@ -340,11 +345,59 @@ class Controller{
             }
         }
     }
-    public function trainerLogin(){
-
-    }
     public function traineeLogin(){
-
+        $error = $user = $pass= $name= $trainee  = "";
+        if (isset($_POST['user'])) {
+            $user = $_POST['user'];
+            $pass = $_POST['pass'];
+            if ($user == "" || $pass == "") {
+                $error = "Not all fields was entered";
+            } else {
+                $connDb=new ConnDb();
+                $conn=$connDb->getConn();
+                $result=$conn->query("SELECT Id,Name,Pass FROM Trainee WHERE UserName = '$user' AND Pass='$pass'");
+                foreach ($result as $item){
+                    $trainee=$item['Id'];
+                    $name=$item['Name'];
+                    break;
+                }
+                if ($result->num_rows == 0) {
+                    $error = "Username/Password invalid";
+                } else {
+                    session_start();
+                    $_SESSION['tid'] =$trainee;
+                    $_SESSION['name'] = $name;
+                    $_SESSION['pass'] = $pass;
+                    header("Location: index_trainee.php");
+                }
+            }
+        }
+    }
+    public function trainerLogin(){
+        $error = $user = $pass= $name = "";
+        if (isset($_POST['user'])) {
+            $user = $_POST['user'];
+            $pass = $_POST['pass'];
+            if ($user == "" || $pass == "") {
+                $error = "Not all fields was entered";
+            } else {
+                $connDb=new ConnDb();
+                $conn=$connDb->getConn();
+                $result=$conn->query("SELECT Name,Pass FROM Trainer WHERE UserName = '$user' AND Pass='$pass'");
+                foreach ($result as $item){
+                    $name=$item['Name'];
+                    break;
+                }
+                if ($result->num_rows == 0) {
+                    $error = "Username/Password invalid";
+                } else {
+                    session_start();
+                    $_SESSION['name'] = $name;
+                    $_SESSION['pass'] = $pass;
+                    header("Location: index_trainer.php");
+                }
+            }
+        }
     }
     public function logout(){
         if(isset($_GET['logout'])){
