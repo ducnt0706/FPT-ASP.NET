@@ -22,6 +22,10 @@
 
 </head>
 <body>
+    <?php
+    include_once 'View/HeadTrainer.php';
+    ?>
+    <br>
     <?php include_once 'Controller/Controller.php';
     $control=new Controller();
     ?>
