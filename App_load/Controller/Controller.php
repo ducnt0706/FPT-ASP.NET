@@ -295,7 +295,6 @@ class Controller{
         }
 
     }
-
     public function detailView(){
             $id=$_SESSION['tid'];
             $modal=new DetailMod();
@@ -305,7 +304,6 @@ class Controller{
 
 
     }
-
     public function detailClassView(){
         if(isset($_GET['classname'])){
             $name=$_GET['classname'];
@@ -318,11 +316,24 @@ class Controller{
 
     }
 
+    //TODO:this is for security purpose
+    public function sanitizeString($str) {
+        $connDb=new ConnDb();
+        $conn=$connDb->getConn();
+        $str = strip_tags($str); //remove html tags
+        $str = htmlentities($str); //encode html (for special characters)
+        if (get_magic_quotes_gpc()){
+            $str = stripslashes($str); //Don't use the magic quotes
+        }
+        $str=$conn->real_escape_string($str);
+        return $str;
+    }
+
     public function adminLogin(){
         $error = $user = $pass=$name = "";
         if (isset($_POST['user'])) {
-            $user = $_POST['user'];
-            $pass = $_POST['pass'];
+            $user = $this->sanitizeString($_POST['user']);
+            $pass = $this->sanitizeString($_POST['pass']);
             if ($user == "" || $pass == "") {
                 $error = "Not all fields was entered";
             } else {
@@ -348,8 +359,8 @@ class Controller{
     public function traineeLogin(){
         $error = $user = $pass= $name= $trainee  = "";
         if (isset($_POST['user'])) {
-            $user = $_POST['user'];
-            $pass = $_POST['pass'];
+            $user = $this->sanitizeString($_POST['user']) ;
+            $pass = $this->sanitizeString($_POST['pass']) ;
             if ($user == "" || $pass == "") {
                 $error = "Not all fields was entered";
             } else {
@@ -376,8 +387,8 @@ class Controller{
     public function trainerLogin(){
         $error = $user = $pass= $name = "";
         if (isset($_POST['user'])) {
-            $user = $_POST['user'];
-            $pass = $_POST['pass'];
+            $user = $this->sanitizeString($_POST['user']);
+            $pass = $this->sanitizeString($_POST['pass']);
             if ($user == "" || $pass == "") {
                 $error = "Not all fields was entered";
             } else {
