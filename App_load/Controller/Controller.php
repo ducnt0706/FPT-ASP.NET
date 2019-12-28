@@ -73,6 +73,28 @@ class Controller{
             $conn=$connDb->getConn();
             $conn->query("UPDATE Trainee SET Name='$name', DateOfBirth='$date', Address='$address', Description='$descript', Lang='$lang', Toeic='$toeic', UserName='$user', Pass='$pass' WHERE Id = '$id'");
             header("Location: ./manage_trainee.php");
+        }elseif (isset($_POST['tinfo'])){
+            $info=$_POST['tinfo'];
+            $connDb=new ConnDb();
+            $conn=$connDb->getConn();
+            $query="SELECT * FROM Trainee 
+                    WHERE Name like '%$info%';
+                    ";
+            $result=$conn->query($query);
+            $arrData=array();
+            foreach ($result as $row){
+                $id= $row['Id'];
+                $name=$row['Name'];
+                $date=$row['DateOfBirth'];
+                $address=$row['Address'];
+                $descript=$row['Description'];
+                $lang=$row['Lang'];
+                $toeic=$row['Toeic'];
+                $user=$row['UserName'];
+                $pass=$row['Pass'];
+                array_push($arrData,new Trainee($id,$name,$date,$address,$descript,$lang,$toeic,$user,$pass));
+            }
+            include_once ('./View/TraineeList.php');
         }
         else
         {
@@ -80,6 +102,13 @@ class Controller{
             $arrData=$model->getAllTrainee();
 
             include_once ('./View/TraineeList.php');
+        }
+    }
+
+    //TODO:Searching for trainee
+    public function searchTrainee(){
+        if(isset($_POST['tinfo'])){
+
         }
     }
 
@@ -300,6 +329,7 @@ class Controller{
             $modal=new DetailMod();
             //need session
             $arrDetail=$modal->getAllDetailByTraineeId($id);
+            $count=$modal->getCountDetailByTraineeId($id);
             include_once './View/DetailShow.php';
 
 

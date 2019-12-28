@@ -17,7 +17,7 @@
                         <form action="add_class.php" method="post">
 
                             <div class="form-group">
-                                <input type="text" name="className" placeholder="Name of class"  required>
+                                <input type="text" name="className" placeholder="Name of class"  required pattern="">
                             </div>
 
                             <div class="form-group">

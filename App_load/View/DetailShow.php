@@ -1,4 +1,7 @@
 <br>
+<div class="text-center">
+    <span class="text-info">Number of registered class: <?php echo $count ?></span>
+</div>
 <br>
 
 <?php

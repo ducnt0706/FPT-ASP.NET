@@ -1,5 +1,13 @@
 
 <div class="container mt-3">
+    <br>
+    <div class="text-center">
+        <form action="manage_trainee.php" method="post">
+                <input name="tinfo" type="text" placeholder="Searching for trainee..." required>
+                <button type="submit" class="btn btn-warning">Search</button>
+        </form>
+    </div>
+    <br>
     <table class="table table-hover table-striped">
         <thead>
             <tr>
